@@ -1,0 +1,23 @@
+{
+  "title": "Hello world",
+  "home": "Home",
+  "about": "About us",
+  "news": "News",
+  "contacts": "Contacts",
+  "auth": "Log in",
+  "name": "Full Name",
+  "email": "Email",
+  "number": "Phone Number",
+  "password":"Password",
+  "biography": "Brief biography",
+  "signup": "Sign Up",
+  "logout": "Log Out",
+  "admin_room": "Admin Panel",
+  "lang_change": "Change Language",
+  "our_news": "Our News",
+  "signInTip": "Already have an account? Sign in",
+  "join_us": "Join Us",
+  "profile": "Profile",
+  "update_profile": "Update Profile",
+  "bio_tip": "Tell us about yourself and leave your social media links"
+}

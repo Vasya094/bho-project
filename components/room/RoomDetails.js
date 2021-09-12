@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Image from 'next/image'
 
-import RoomFeatures from './RoomFeatures'
 import NewReview from '../review/NewReview'
 import ListReviews from '../review/ListReviews'
 import DatePicker from 'react-datepicker'
@@ -151,15 +150,7 @@ const RoomDetails = () => {
             </Head>
 
             <div className="container container-fluid">
-                <h2 className='mt-5'>{room.name}</h2>
-                <p>{room.address}</p>
-
-                <div className="ratings mt-auto mb-3">
-                    <div className="rating-outer">
-                        <div className="rating-inner" style={{ width: `${(room.ratings / 5) * 100}%` }}></div>
-                    </div>
-                    <span id="no_of_reviews">({room.numOfReviews} Reviews)</span>
-                </div>
+                <h2 className='my-5'>{room.name}</h2>
 
                 <Carousel hover='pause'>
                     {room.images && room.images.map(image => (
@@ -181,67 +172,8 @@ const RoomDetails = () => {
                     <div className="col-12 col-md-6 col-lg-8">
                         <h3>Description</h3>
                         <p>{room.description}</p>
-
-                        <RoomFeatures room={room} />
-
-                    </div>
-
-                    <div className="col-12 col-md-6 col-lg-4">
-                        <div className="booking-card shadow-lg p-4">
-                            <p className='price-per-night'><b>${room.pricePerNight}</b> / night</p>
-
-                            <hr />
-
-                            <p className="mt-5 mb-3">
-                                Pick Check In & Check Out Date
-                            </p>
-
-                            <DatePicker
-                                className='w-100'
-                                selected={checkInDate}
-                                onChange={onChange}
-                                startDate={checkInDate}
-                                endDate={checkOutDate}
-                                minDate={new Date()}
-                                excludeDates={excludedDates}
-                                selectsRange
-                                inline
-                            />
-
-                            {available === true &&
-                                <div className="alert alert-success my-3 font-weight-bold">Room is available. Book now.</div>
-                            }
-
-                            {available === false &&
-                                <div className="alert alert-danger my-3 font-weight-bold">Room not available. Try different dates.</div>
-                            }
-
-                            {available && !user &&
-                                <div className="alert alert-danger my-3 font-weight-bold">Login to book room.</div>
-                            }
-
-                            {available && user &&
-                                <button
-                                    className="btn btn-block py-3 booking-btn"
-                                    onClick={() => bookRoom(room._id, room.pricePerNight)}
-                                    disabled={bookingLoading || paymentLoading ? true : false}
-                                >
-                                    Pay - ${daysOfStay * room.pricePerNight}
-                                </button>
-                            }
-
-                        </div>
                     </div>
                 </div>
-
-                <NewReview />
-
-                {room.reviews && room.reviews.length > 0 ?
-                    <ListReviews reviews={room.reviews} />
-                    :
-                    <p><b>No Reviews on this room</b></p>
-                }
-
             </div>
         </>
     )

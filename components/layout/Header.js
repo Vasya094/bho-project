@@ -1,11 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
-
 import { useDispatch, useSelector } from 'react-redux'
 import { loadUser } from '../../redux/actions/userActions'
 import { signOut } from 'next-auth/client'
+import { Dropdown } from 'react-bootstrap'
+import useTranslation from 'next-translate/useTranslation'
+import Router from 'next/router'
 
 const Header = () => {
+    const { t } = useTranslation()
+
+    const [currentLang, setCurrentLang] = useState('ar')
 
     const dispatch = useDispatch()
 
@@ -22,13 +27,18 @@ const Header = () => {
         signOut();
     }
 
+      const setLang = (locale) => {
+    setCurrentLang(locale)
+    Router.push('/', undefined, { locale })
+  }
+
     return (
         <nav className="navbar row justify-content-center sticky-top">
             <div className="container">
                 <div className="col-3 p-0">
                     <div className="navbar-brand">
                         <Link href='/'>
-                            <img style={{ cursor: 'pointer' }} src="/images/bookit_logo.png" alt="BookIT" />
+                            <span>BHO</span>
                         </Link>
                     </div>
                 </div>
@@ -44,14 +54,7 @@ const Header = () => {
                                 aria-haspopup="true"
                                 aria-expanded="false"
                             >
-                                <figure className="avatar avatar-nav">
-                                    <img
-                                        src={user.avatar && user.avatar.url}
-                                        alt={user && user.name}
-                                        className="rounded-circle"
-                                    />
-                                </figure>
-                                <span>{user && user.name}</span>
+                                <span>{user.name}</span>
                             </a>
 
                             <div className="dropdown-menu" aria-labelledby='dropDownMenuButton'>
@@ -80,16 +83,12 @@ const Header = () => {
                                     </>
                                 )}
 
-                                <Link href='/bookings/me'>
-                                    <a className="dropdown-item">My Bookings</a>
-                                </Link>
-
                                 <Link href='/me/update'>
-                                    <a className="dropdown-item">Profile</a>
+                                    <a className="dropdown-item">{t('common:profile')}</a>
                                 </Link>
 
                                 <Link href='/'>
-                                    <a className="dropdown-item text-danger" onClick={logoutHandler}>Logout</a>
+                                    <a className="dropdown-item text-danger" onClick={logoutHandler}>{t('common:logout')}</a>
                                 </Link>
 
                             </div>
@@ -97,11 +96,23 @@ const Header = () => {
                         </div>
                     ) :
                         !loading && <Link href='/login'>
-                            <a className="btn btn-danger px-4 text-white login-header-btn float-right">Login</a>
+                            <a className="btn btn-danger text-white login-header-btn">{t('common:auth')}</a>
                         </Link>
                     }
 
 
+                </div>
+                <div>
+                    <Dropdown>
+                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                            {t("common:lang_change")}
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                            <Dropdown.Item onClick={() => setLang('ar')}>AR</Dropdown.Item>
+                            <Dropdown.Item onClick={() => setLang('en')}>EN</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
                 </div>
             </div>
         </nav>

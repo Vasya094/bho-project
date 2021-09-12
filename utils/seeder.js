@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const rooms = require('../data/rooms')
 
-mongoose.connect('mongodb+srv://ghulamabbas_bookit:bookit258@bookit.ghtfw.mongodb.net/bookit?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://rinat-amir:123098zxc@cluster0.nwg0x.mongodb.net/bhodb?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
