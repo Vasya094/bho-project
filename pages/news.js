@@ -1,4 +1,4 @@
-import Main from '../components/Main'
+import Home from '../components/Home'
 import Layout from '../components/layout/Layout'
 
 import { getRooms } from '../redux/actions/roomActions'
@@ -8,7 +8,7 @@ import { wrapper } from '../redux/store'
 export default function Index() {
   return (
     <Layout>
-      <Main />
+      <Home />
     </Layout>
   )
 }

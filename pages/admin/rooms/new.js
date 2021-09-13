@@ -1,13 +1,13 @@
 import React from 'react'
 import { getSession } from 'next-auth/client'
 
-import NewRoom from '../../../components/admin/NewRoom'
+import NewNews from '../../../components/admin/NewNews'
 import Layout from '../../../components/layout/Layout'
 
 const NewRoomPage = () => {
     return (
         <Layout title='New Room'>
-            <NewRoom />
+            <NewNews />
         </Layout>
     )
 }

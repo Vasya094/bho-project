@@ -153,7 +153,7 @@ const resetPassword = catchAsyncErrors(async (req, res, next) => {
 const allAdminUsers = catchAsyncErrors(async (req, res) => {
 
     const users = await User.find();
-
+console.log(users, 1)
     res.status(200).json({
         success: true,
         users
@@ -209,11 +209,6 @@ const deleteUser = catchAsyncErrors(async (req, res) => {
     if (!user) {
         return next(new ErrorHandler('User not found with this ID.', 400))
     }
-
-    // Remove avatar 
-    const image_id = user.avatar.public_id;
-    await cloudinary.v2.uploader.destroy(image_id)
-
 
     await user.remove();
 

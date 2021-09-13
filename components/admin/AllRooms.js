@@ -7,12 +7,12 @@ import Loader from '../layout/Loader'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify';
-
+import useTranslation from 'next-translate/useTranslation';
 import { getAdminRooms, deleteRoom } from '../../redux/actions/roomActions'
 import { DELETE_ROOM_RESET } from '../../redux/constants/roomConstants'
 
 const AllRooms = () => {
-
+    const { t } = useTranslation()
     const dispatch = useDispatch()
     const router = useRouter()
 
@@ -22,7 +22,7 @@ const AllRooms = () => {
     useEffect(() => {
 
         dispatch(getAdminRooms())
-
+debugger
         if (error) {
             toast.error(error);
             dispatch(clearErrors())
@@ -45,22 +45,12 @@ const AllRooms = () => {
         const data = {
             columns: [
                 {
-                    label: 'Room ID',
-                    field: 'id',
-                    sort: 'asc'
-                },
-                {
-                    label: 'Name',
+                    label: t("common:title"),
                     field: 'name',
                     sort: 'asc'
                 },
                 {
-                    label: 'Price / Night',
-                    field: 'price',
-                    sort: 'asc'
-                },
-                {
-                    label: 'Category',
+                    label: t("common:category"),
                     field: 'category',
                     sort: 'asc'
                 },
@@ -109,10 +99,10 @@ const AllRooms = () => {
         <div className='container container-fluid'>
             {loading ? <Loader /> :
                 <>
-                    <h1 className='my-5'>{`${rooms && rooms.length} Rooms`}
+                    <h1 className='my-5'>{`${rooms && rooms.length} ${t("common:news")}`}
 
                         <Link href='/admin/rooms/new'>
-                            <a className="mt-0 btn text-white float-right new-room-btn">Create Room</a>
+                            <a className="mt-0 btn text-white float-right new-room-btn">{t("common:new_news")}</a>
                         </Link>
 
                     </h1>

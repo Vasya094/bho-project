@@ -1,8 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import useTranslation from 'next-translate/useTranslation'
 
 const RoomItem = ({ room }) => {
+    const { t } = useTranslation()
     return (
         <div className="col-sm-12 col-md-6 col-lg-10 my-3">
             <div className="p-2 d-flex flex-row">
@@ -18,10 +20,11 @@ const RoomItem = ({ room }) => {
                             <a>{room.name}</a>
                         </Link>
                     </h5>
-
-                    <button className="btn btn-block view-btn">
-                        <Link href={`/room/${room._id}`}>View Details</Link>
-                    </button>
+                    <Link href={`/room/${room._id}`}>
+                        <button className="btn btn-block view-btn">
+                            {t("common:view_details")}
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>

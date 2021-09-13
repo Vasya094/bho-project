@@ -45,11 +45,6 @@ const AllUsers = () => {
         const data = {
             columns: [
                 {
-                    label: 'User ID',
-                    field: 'id',
-                    sort: 'asc'
-                },
-                {
                     label: 'Name',
                     field: 'name',
                     sort: 'asc'

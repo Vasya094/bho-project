@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadUser } from '../../redux/actions/userActions'
 import { signOut } from 'next-auth/client'
-import { Dropdown } from 'react-bootstrap'
+import { Dropdown, Button, Navbar } from 'react-bootstrap'
 import useTranslation from 'next-translate/useTranslation'
 import Router from 'next/router'
 
@@ -27,19 +27,44 @@ const Header = () => {
         signOut();
     }
 
-      const setLang = (locale) => {
-    setCurrentLang(locale)
-    Router.push('/', undefined, { locale })
-  }
+    const setLang = (locale) => {
+        setCurrentLang(locale)
+        Router.push('/', undefined, { locale })
+    }
 
     return (
         <nav className="navbar row justify-content-center sticky-top">
             <div className="container">
                 <div className="col-3 p-0">
                     <div className="navbar-brand">
-                        <Link href='/'>
-                            <span>BHO</span>
-                        </Link>
+                        <Dropdown variant="flat" size="xxl">
+                            <Dropdown.Toggle variant="flat" id="dropdown-basic">
+                                BHO
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item>
+                                    <Link href='/'>
+                                        <a className="dropdown-item">{t('common:home')}</a>
+                                    </Link>
+                                </Dropdown.Item>
+                                <Dropdown.Item>
+                                    <Link href='/news'>
+                                        <a className="dropdown-item">{t('common:news')}</a>
+                                    </Link>
+                                </Dropdown.Item>
+                                <Dropdown.Item>
+                                    <Link href='/about'>
+                                        <a className="dropdown-item">{t('common:about')}</a>
+                                    </Link>
+                                </Dropdown.Item>
+                                <Dropdown.Item>
+                                    <Link href='/contact'>
+                                        <a className="dropdown-item">Rooms</a>
+                                    </Link>
+                                </Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
                     </div>
                 </div>
 
@@ -63,21 +88,12 @@ const Header = () => {
                                     <>
 
                                         <Link href='/admin/rooms'>
-                                            <a className="dropdown-item">Rooms</a>
-                                        </Link>
-
-                                        <Link href='/admin/bookings'>
-                                            <a className="dropdown-item">Bookings</a>
+                                            <a className="dropdown-item">{t('common:news')}</a>
                                         </Link>
 
                                         <Link href='/admin/users'>
-                                            <a className="dropdown-item">Users</a>
+                                            <a className="dropdown-item">{t('common:users')}</a>
                                         </Link>
-
-                                        <Link href='/admin/reviews'>
-                                            <a className="dropdown-item">Reviews</a>
-                                        </Link>
-
                                         <hr />
 
                                     </>
@@ -96,15 +112,15 @@ const Header = () => {
                         </div>
                     ) :
                         !loading && <Link href='/login'>
-                            <a className="btn btn-danger text-white login-header-btn">{t('common:auth')}</a>
+                            <a className="btn text-white login-header-btn">{t('common:auth')}</a>
                         </Link>
                     }
 
 
                 </div>
                 <div>
-                    <Dropdown>
-                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    <Dropdown variant="flat" size="xxl">
+                        <Dropdown.Toggle variant="flat" id="dropdown-basic">
                             {t("common:lang_change")}
                         </Dropdown.Toggle>
 

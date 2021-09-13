@@ -9,21 +9,15 @@ import { toast } from 'react-toastify';
 
 import { updateRoom, getRoomDetails, clearErrors } from '../../redux/actions/roomActions'
 import { UPDATE_ROOM_RESET } from '../../redux/constants/roomConstants'
+import useTranslation from 'next-translate/useTranslation';
 
 const UpdateRoom = () => {
 
-    const [name, setName] = useState('')
-    const [price, setPrice] = useState(0)
+    const { t } = useTranslation()
+
+    const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
-    const [address, setAddress] = useState('')
     const [category, setCategory] = useState('King')
-    const [guestCapacity, setGuestCapacity] = useState(1)
-    const [numOfBeds, setNumOfBeds] = useState(1)
-    const [internet, setInternet] = useState(false)
-    const [breakfast, setBreakfast] = useState(false)
-    const [airConditioned, setAirConditioned] = useState(false)
-    const [petsAllowed, setPetsAllowed] = useState(false)
-    const [roomCleaning, setRoomCleaning] = useState(false)
 
     const [images, setImages] = useState([])
     const [oldImages, setOldImages] = useState([])
@@ -42,18 +36,9 @@ const UpdateRoom = () => {
         if (room && room._id !== id) {
             dispatch(getRoomDetails('', id))
         } else {
-            setName(room.name)
-            setPrice(room.pricePerNight)
+            setTitle(room.title)
             setDescription(room.description)
-            setAddress(room.address)
             setCategory(room.category)
-            setGuestCapacity(room.guestCapacity)
-            setNumOfBeds(room.numOfBeds)
-            setInternet(room.internet)
-            setBreakfast(room.breakfast)
-            setAirConditioned(room.airConditioned)
-            setPetsAllowed(room.petsAllowed)
-            setRoomCleaning(room.roomCleaning)
             setOldImages(room.images)
         }
 
@@ -79,18 +64,9 @@ const UpdateRoom = () => {
         e.preventDefault()
 
         const roomData = {
-            name,
-            pricePerNight: price,
+            title,
             description,
-            address,
             category,
-            guestCapacity: Number(guestCapacity),
-            numOfBeds: Number(numOfBeds),
-            internet,
-            breakfast,
-            airConditioned,
-            petsAllowed,
-            roomCleaning,
         }
 
         if (images.length !== 0) roomData.images = images
@@ -133,31 +109,20 @@ const UpdateRoom = () => {
                     <div className="row wrapper">
                         <div className="col-10 col-lg-8">
                             <form className="shadow-lg" onSubmit={submitHandler} enctype="multipart/form-data">
-                                <h1 className="mb-4">Update Room</h1>
+                                <h1 className="mb-4">{t("common:update_one_news")}</h1>
                                 <div className="form-group">
-                                    <label htmlFor="name_field">Name</label>
+                                    <label htmlFor="name_field">{t("common:title")}</label>
                                     <input
                                         type="text"
                                         id="name_field"
                                         className="form-control"
-                                        value={name}
+                                        value={title}
                                         onChange={(e) => setName(e.target.value)}
                                         required
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="price_field">Price</label>
-                                    <input
-                                        type="text"
-                                        id="price_field"
-                                        className="form-control"
-                                        value={price}
-                                        onChange={(e) => setPrice(e.target.value)}
-                                        required
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="description_field">Description</label>
+                                    <label htmlFor="description_field">{t("common:description")}</label>
                                     <textarea
                                         className="form-control"
                                         id="description_field"
@@ -167,132 +132,24 @@ const UpdateRoom = () => {
                                         required
                                     ></textarea>
                                 </div>
-                                <div className="form-group">
-                                    <label htmlFor="address_field">Address</label>
-                                    <input
-                                        type="text"
-                                        id="address_field"
-                                        className="form-control"
-                                        value={address}
-                                        onChange={(e) => setAddress(e.target.value)}
-                                        required
-                                    />
-                                </div>
 
                                 <div className="form-group">
-                                    <label htmlFor="category_field">Category</label>
+                                    <label htmlFor="category_field">{t("common:category")}</label>
                                     <select
                                         className="form-control"
                                         id="room_type_field"
                                         value={category}
                                         onChange={(e) => setCategory(e.target.value)}
                                     >
-                                        {['King', 'Single', 'Twins'].map(category => (
-                                            <option key={category} value={category}>{category}</option>
-                                        ))}
+                                        {['News',
+                                            'Collect',
+                                            'Campaign'].map(category => (
+                                                <option key={category} value={category}>{t(`common:${category}`)}</option>
+                                            ))}
                                     </select>
                                 </div>
-
-                                <div className="form-group">
-                                    <label htmlFor="category_field">Guest Capacity</label>
-                                    <select
-                                        className="form-control"
-                                        id="guest_field"
-                                        value={guestCapacity}
-                                        onChange={(e) => setGuestCapacity(e.target.value)}
-                                    >
-                                        {[1, 2, 3, 4, 5, 6].map(num => (
-                                            <option key={num} value={num}>{num}</option>
-                                        ))}
-                                    </select>
-                                </div>
-
-
-                                <div className="form-group">
-                                    <label htmlFor="category_field">Number of Beds</label>
-                                    <select
-                                        className="form-control"
-                                        id="numofbeds_field"
-                                        value={numOfBeds}
-                                        onChange={(e) => setNumOfBeds(e.target.value)}
-                                    >
-                                        {[1, 2, 3].map(num => (
-                                            <option key={num} value={num}>{num}</option>
-                                        ))}
-                                    </select>
-                                </div>
-
-
-                                <label className="mb-3">Room Features</label>
-                                <div className="form-check">
-                                    <input
-                                        className="form-check-input"
-                                        type="checkbox"
-                                        id="internet_checkbox"
-                                        value={internet}
-                                        onChange={(e) => setInternet(e.target.checked)}
-                                        checked={internet}
-                                    />
-                                    <label className="form-check-label" htmlFor="internet_checkbox">
-                                        Internet
-                                    </label>
-                                </div>
-                                <div className="form-check">
-                                    <input
-                                        className="form-check-input"
-                                        type="checkbox"
-                                        id="breakfast_checkbox"
-                                        value={breakfast}
-                                        onChange={(e) => setBreakfast(e.target.checked)}
-                                        checked={breakfast}
-                                    />
-                                    <label className="form-check-label" htmlFor="breakfast_checkbox">
-                                        Breakfast
-                                    </label>
-                                </div>
-                                <div className="form-check">
-                                    <input
-                                        className="form-check-input"
-                                        type="checkbox"
-                                        id="airConditioned_checkbox"
-                                        value={airConditioned}
-                                        onChange={(e) => setAirConditioned(e.target.checked)}
-                                        checked={airConditioned}
-                                    />
-                                    <label className="form-check-label" htmlFor="airConditioned_checkbox">
-                                        Air Conditioned
-                                    </label>
-                                </div>
-                                <div className="form-check">
-                                    <input
-                                        className="form-check-input"
-                                        type="checkbox"
-                                        id="petsAllowed_checkbox"
-                                        value={petsAllowed}
-                                        onChange={(e) => setPetsAllowed(e.target.checked)}
-                                        checked={petsAllowed}
-                                    />
-                                    <label className="form-check-label" htmlFor="petsAllowed_checkbox">
-                                        Pets Allowed
-                                    </label>
-                                </div>
-                                <div className="form-check">
-                                    <input
-                                        className="form-check-input"
-                                        type="checkbox"
-                                        id="roomCleaning_checkbox"
-                                        value={roomCleaning}
-                                        onChange={(e) => setRoomCleaning(e.target.checked)}
-                                        checked={roomCleaning}
-                                    />
-                                    <label className="form-check-label" htmlFor="roomCleaning_checkbox">
-                                        Room Cleaning
-                                    </label>
-                                </div>
-
-
                                 <div className="form-group mt-4">
-                                    <label>Images</label>
+                                    <label>{t("common:images")}</label>
                                     <div className="custom-file">
                                         <input
                                             type="file"
@@ -303,7 +160,7 @@ const UpdateRoom = () => {
                                             multiple
                                         />
                                         <label className="custom-file-label" htmlFor="customFile">
-                                            Choose Images
+                                            {t("common:choose_images")}
                                         </label>
                                     </div>
 
@@ -339,7 +196,7 @@ const UpdateRoom = () => {
                                     className="btn btn-block new-room-btn py-3"
                                     disabled={loading ? true : false}
                                 >
-                                    {loading ? <ButtonLoader /> : 'UPDATE'}
+                                    {loading ? <ButtonLoader /> : t("common:update")}
                                 </button>
                             </form>
                         </div>

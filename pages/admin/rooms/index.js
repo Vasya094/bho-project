@@ -15,7 +15,8 @@ const AllRoomsPage = () => {
 export async function getServerSideProps(context) {
 
     const session = await getSession({ req: context.req })
-
+    debugger
+console.log(session, 1)
     if (!session || session.user.role !== 'admin') {
         return {
             redirect: {

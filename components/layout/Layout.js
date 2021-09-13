@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Layout = ({ children, title = 'Book Best Hotels for your Holiday' }) => {
     return (
-        <div>
+        <div id="rooot">
             <Head>
                 <title>{title}</title>
                 <meta charSet="utf-8" />
