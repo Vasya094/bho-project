@@ -14,6 +14,7 @@ const UpdateUser = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [role, setRole] = useState('')
+    const [biography, setBiography] = useState('')
 
     const dispatch = useDispatch()
     const router = useRouter()
@@ -31,6 +32,7 @@ const UpdateUser = () => {
             setName(user.name)
             setEmail(user.email)
             setRole(user.role)
+            setBiography(user.biography)
         }
 
         if (error) {
@@ -50,7 +52,7 @@ const UpdateUser = () => {
         e.preventDefault();
 
         const userData = {
-            name, email, role
+            name, email, role, biography
         }
 
         dispatch(updateUser(user._id, userData))
@@ -101,6 +103,22 @@ const UpdateUser = () => {
                                         <option value="user">user</option>
                                         <option value="admin">admin</option>
                                     </select>
+                                </div>
+
+                                <div>
+                                    <Form.Group
+                                        className="mb-3"
+                                        controlId="exampleForm.ControlTextarea1"
+                                    >
+                                        <Form.Label>{t("common:biography")}</Form.Label>
+                                        <Form.Control
+                                            as="textarea"
+                                            value={biography}
+                                            onChange={onChange}
+                                            name="biography"
+                                            placeholder={t('common:bio_tip')}
+                                            rows={3} />
+                                    </Form.Group>
                                 </div>
 
                                 <button type="submit" className="btn update-btn btn-block mt-4 mb-3">
