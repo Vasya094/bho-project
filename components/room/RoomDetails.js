@@ -2,11 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Image from 'next/image'
-
-import NewReview from '../review/NewReview'
-import ListReviews from '../review/ListReviews'
-import DatePicker from 'react-datepicker'
-import "react-datepicker/dist/react-datepicker.css";
+import useTranslation from 'next-translate/useTranslation'
 
 import { Carousel } from 'react-bootstrap'
 
@@ -14,31 +10,23 @@ import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify';
 import { clearErrors } from '../../redux/actions/roomActions'
 
-import { checkBooking, getBookedDates } from '../../redux/actions/bookingActions'
 import { CHECK_BOOKING_RESET } from '../../redux/constants/bookingConstants'
 
 import getStripe from '../../utils/getStripe'
 import axios from 'axios'
 
 const RoomDetails = () => {
+    const { t } = useTranslation()
 
     const [checkInDate, setCheckInDate] = useState()
     const [checkOutDate, setCheckOutDate] = useState()
     const [daysOfStay, setDaysOfStay] = useState()
-    const [paymentLoading, setPaymentLoading] = useState(false)
 
     const dispatch = useDispatch()
     const router = useRouter();
 
-    const { dates } = useSelector(state => state.bookedDates);
     const { user } = useSelector(state => state.loadedUser);
     const { room, error } = useSelector(state => state.roomDetails);
-    const { available, loading: bookingLoading } = useSelector(state => state.checkBooking);
-
-    const excludedDates = []
-    dates.forEach(date => {
-        excludedDates.push(new Date(date))
-    })
 
 
     const onChange = (dates) => {
@@ -128,21 +116,6 @@ const RoomDetails = () => {
 
     }
 
-
-    useEffect(() => {
-
-        dispatch(getBookedDates(id))
-
-        toast.error(error)
-        dispatch(clearErrors())
-
-        return () => {
-            dispatch({ type: CHECK_BOOKING_RESET })
-        }
-
-    }, [dispatch, id])
-
-
     return (
         <>
             <Head>
@@ -170,7 +143,7 @@ const RoomDetails = () => {
 
                 <div className="row my-5">
                     <div className="col-12 col-md-6 col-lg-8">
-                        <h3>Description</h3>
+                        <h3>{t("common:description")}</h3>
                         <p>{room.description}</p>
                     </div>
                 </div>
