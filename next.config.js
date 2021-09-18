@@ -27,7 +27,7 @@ module.exports = {
         SMTP_FROM_EMAIL: "",
         SMTP_FROM_NAME: "",
 
-      NEXTAUTH_URL: 'https://bho-test.herokuapp.com/',
+      NEXTAUTH_URL: 'https://bho-test.herokuapp.com',
     },
     images: {
         domains: ['res.cloudinary.com'],
