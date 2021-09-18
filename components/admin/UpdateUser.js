@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-
+import { Form } from "react-bootstrap";
 import Loader from '../layout/Loader'
-
+import useTranslation from 'next-translate/useTranslation'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify';
 
@@ -10,7 +10,7 @@ import { updateUser, getUserDetails, clearErrors } from '../../redux/actions/use
 import { UPDATE_USER_RESET } from '../../redux/constants/userConstants'
 
 const UpdateUser = () => {
-
+    const { t } = useTranslation()
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [role, setRole] = useState('')
@@ -65,10 +65,10 @@ const UpdateUser = () => {
                     <div className="row wrapper">
                         <div className="col-10 col-lg-5">
                             <form className="shadow-lg" onSubmit={submitHandler}>
-                                <h1 className="mt-2 mb-5">Update User</h1>
+                                <h1 className="mt-2 mb-5">update_user</h1>
 
                                 <div className="form-group">
-                                    <label htmlFor="name_field">Name</label>
+                                    <label htmlFor="name_field">{t("common:name")}</label>
                                     <input
                                         type="name"
                                         id="name_field"
@@ -80,7 +80,7 @@ const UpdateUser = () => {
                                 </div>
 
                                 <div className="form-group">
-                                    <label htmlFor="email_field">Email</label>
+                                    <label htmlFor="email_field">{t("common:email")}</label>
                                     <input
                                         type="email"
                                         id="email_field"
@@ -92,7 +92,7 @@ const UpdateUser = () => {
                                 </div>
 
                                 <div className="form-group">
-                                    <label htmlFor="role_field">Role</label>
+                                    <label htmlFor="role_field">{t("common:role")}</label>
 
                                     <select id="role_field" className="form-control" name="role"
                                         value={role}
@@ -114,7 +114,7 @@ const UpdateUser = () => {
                                         <Form.Control
                                             as="textarea"
                                             value={biography}
-                                            onChange={onChange}
+                                            onChange={(e) => setBiography(e.target.value)}
                                             name="biography"
                                             placeholder={t('common:bio_tip')}
                                             rows={3} />
@@ -122,7 +122,7 @@ const UpdateUser = () => {
                                 </div>
 
                                 <button type="submit" className="btn update-btn btn-block mt-4 mb-3">
-                                    Update
+                                    {t('common:update')}
                                 </button>
                             </form>
                         </div>
