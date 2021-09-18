@@ -3,13 +3,13 @@ const mongoose = require('mongoose');
 const roomSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: [true, 'Please enter room name'],
+        required: [true, 'Please enter title'],
         trim: true,
-        maxLength: [100, 'Room name cannot exceed 100 characters']
+        maxLength: [100, 'News title cannot exceed 100 characters']
     },
     description: {
         type: String,
-        required: [true, 'Please enter room description'],
+        required: [true, 'Please enter news description'],
     },
     images: [
         {
@@ -25,14 +25,14 @@ const roomSchema = new mongoose.Schema({
     ],
     category: {
         type: String,
-        required: [true, 'Please enter room category'],
+        required: [true, 'Please enter news category'],
         enum: {
             values: [
                 'News',
                 'Collect',
                 'Campaign'
             ],
-            message: 'Please select correct category for room'
+            message: 'Please select correct category for news'
         }
     },
     user: {

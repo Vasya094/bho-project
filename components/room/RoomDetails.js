@@ -159,7 +159,7 @@ const RoomDetails = () => {
                                 <Image
                                     className='d-block m-auto'
                                     src={image.url}
-                                    alt={room.name}
+                                    alt={room.title}
                                     layout='fill'
                                 />
                             </div>

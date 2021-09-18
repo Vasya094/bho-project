@@ -46,7 +46,7 @@ debugger
             columns: [
                 {
                     label: t("common:title"),
-                    field: 'name',
+                    field: 'title',
                     sort: 'asc'
                 },
                 {
@@ -67,8 +67,7 @@ debugger
         rooms && rooms.forEach(room => {
             data.rows.push({
                 id: room._id,
-                name: room.name,
-                price: `$${room.pricePerNight}`,
+                title: room.title,
                 category: room.category,
                 actions:
                     <>

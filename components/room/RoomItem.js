@@ -17,7 +17,7 @@ const RoomItem = ({ room }) => {
                 <div className="ml-5 justify-content-md-between card-body d-flex flex-column">
                     <h5 className="card-title">
                         <Link href={`/room/${room._id}`}>
-                            <a>{room.name}</a>
+                            <a>{room.title}</a>
                         </Link>
                     </h5>
                     <Link href={`/room/${room._id}`}>

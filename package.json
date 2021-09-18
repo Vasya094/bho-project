@@ -9,6 +9,9 @@
     "seeder": "node utils/seeder"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.15",
     "@stripe/stripe-js": "^1.14.0",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",

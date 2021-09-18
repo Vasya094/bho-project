@@ -41,7 +41,7 @@ const Home = () => {
 
         } else {
 
-            router.push(`/?page=${pageNumber}`)
+            router.push(`/news/?page=${pageNumber}`)
             // window.location.href = `/?page=${pageNumber}`
         }
 
@@ -62,7 +62,7 @@ const Home = () => {
 
                 <div className="column">
                     {rooms && rooms.length === 0 ?
-                        <div className="alert alert-danger mt-5 w-100"><b>No News.</b></div>
+                        <div className="alert alert-danger mt-5 w-100"><b>{t('common:no_news')}</b></div>
                         :
                         rooms && rooms.map(room => (
                             <RoomItem key={room._id} room={room} />

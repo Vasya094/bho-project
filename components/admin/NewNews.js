@@ -13,18 +13,9 @@ import useTranslation from 'next-translate/useTranslation';
 const NewRoom = () => {
     const { t } = useTranslation()
 
-    const [name, setName] = useState('')
-    const [price, setPrice] = useState(0)
+    const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
-    const [address, setAddress] = useState('')
-    const [category, setCategory] = useState('King')
-    const [guestCapacity, setGuestCapacity] = useState(1)
-    const [numOfBeds, setNumOfBeds] = useState(1)
-    const [internet, setInternet] = useState(false)
-    const [breakfast, setBreakfast] = useState(false)
-    const [airConditioned, setAirConditioned] = useState(false)
-    const [petsAllowed, setPetsAllowed] = useState(false)
-    const [roomCleaning, setRoomCleaning] = useState(false)
+    const [category, setCategory] = useState('News')
 
     const [images, setImages] = useState([])
     const [imagesPreview, setImagesPreview] = useState([])
@@ -52,21 +43,12 @@ const NewRoom = () => {
         e.preventDefault()
 
         const roomData = {
-            name,
-            pricePerNight: price,
+            title,
             description,
-            address,
             category,
-            guestCapacity: Number(guestCapacity),
-            numOfBeds: Number(numOfBeds),
-            internet,
-            breakfast,
-            airConditioned,
-            petsAllowed,
-            roomCleaning,
             images
         }
-
+debugger
         if (images.length === 0) return toast.error('Please upload images.')
 
         dispatch(newRoom(roomData))
@@ -111,8 +93,8 @@ const NewRoom = () => {
                                 type="text"
                                 id="name_field"
                                 className="form-control"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
                                 required
                             />
                         </div>

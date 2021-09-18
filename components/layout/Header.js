@@ -59,8 +59,8 @@ const Header = () => {
                                     </Link>
                                 </Dropdown.Item>
                                 <Dropdown.Item>
-                                    <Link href='/contact'>
-                                        <a className="dropdown-item">Rooms</a>
+                                    <Link href='/contacts'>
+                                        <a className="dropdown-item">{t('common:contacts_info')}</a>
                                     </Link>
                                 </Dropdown.Item>
                             </Dropdown.Menu>

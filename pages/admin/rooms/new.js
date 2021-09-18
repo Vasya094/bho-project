@@ -6,7 +6,7 @@ import Layout from '../../../components/layout/Layout'
 
 const NewRoomPage = () => {
     return (
-        <Layout title='New Room'>
+        <Layout title='New News'>
             <NewNews />
         </Layout>
     )

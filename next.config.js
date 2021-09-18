@@ -16,9 +16,9 @@ module.exports = {
 
         STRIPE_WEBHOOK_SECRET: '',
 
-        CLOUDINARY_CLOUD_NAME: '',
-        CLOUDINARY_API_KEY: '',
-        CLOUDINARY_API_SECRET: '',
+        CLOUDINARY_CLOUD_NAME: 'ooo-hahaha',
+        CLOUDINARY_API_KEY: '215228221881692',
+        CLOUDINARY_API_SECRET: '8T731vzyIrz-81GKoRxPFUt05UE',
 
         SMTP_HOST: "",
         SMTP_PORT: "",

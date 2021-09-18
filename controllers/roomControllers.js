@@ -1,5 +1,4 @@
 import Room from '../models/room'
-import Booking from '../models/booking'
 
 import cloudinary from 'cloudinary'
 

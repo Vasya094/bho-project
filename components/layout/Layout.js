@@ -12,6 +12,7 @@ const Layout = ({ children, title = 'Book Best Hotels for your Holiday' }) => {
         <div id="rooot">
             <Head>
                 <title>{title}</title>
+                <link rel="icon" href="/favicon.png" />
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
