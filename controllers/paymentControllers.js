@@ -1,6 +1,5 @@
 import Room from '../models/room'
 import User from '../models/user'
-import Booking from '../models/booking'
 import getRawBody from 'raw-body'
 
 import catchAsyncErrors from '../middlewares/catchAsyncErrors'
