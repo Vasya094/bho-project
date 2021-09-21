@@ -7,6 +7,10 @@ body {
     overflow-x: hidden;
 }
 
+* {
+    font-family: sans-serif;
+}
+
 
 /* Scroll Bar */
 
@@ -542,10 +546,36 @@ input::placeholder {
 #foo {
     bottom: 0;
     width: 100%;
-    margin: 5% 0;
     color: #3c251c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
 }
 
 #rooot {
-    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#main_title {
+    position: relative;
+    top: 2rem;
+    left: 22%;
+}
+
+.social-container {
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+    justify-content: space-around;
+}
+
+.social {
+    color: #A88569;
+    cursor: pointer;
+}
+.social:hover {
+    color: #ddb99bef;
 }
