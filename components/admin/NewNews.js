@@ -60,9 +60,9 @@ debugger
 
         const files = Array.from(e.target.files)
 
-        setImages([]);
-        setImagesPreview([]);
-
+        // setImages([]);
+        // setImagesPreview([]);
+debugger
         files.forEach(file => {
 
             const reader = new FileReader();
@@ -70,12 +70,13 @@ debugger
             reader.onload = () => {
                 if (reader.readyState === 2) {
                     setImages(oldArray => [...oldArray, reader.result]);
+                    debugger
                     setImagesPreview(oldArray => [...oldArray, reader.result]);
                 }
             }
 
             reader.readAsDataURL(file)
-
+debugger
         })
 
     }
@@ -127,7 +128,7 @@ debugger
 
 
                         <div className="form-group mt-4">
-                            <label>Images</label>
+                            <label>{t('common:images')}</label>
                             <div className="custom-file">
                                 <input
                                     type="file"
@@ -138,7 +139,7 @@ debugger
                                     multiple
                                 />
                                 <label className="custom-file-label" htmlFor="customFile">
-                                    Choose Images
+                                    {t('common:choose_images')}
                                 </label>
                             </div>
 

@@ -1,12 +1,11 @@
 import React from 'react'
+import { Image } from 'next/image';
 
 const Contacts = () => {
     return (
         <div>
             <div>
-                BHO email: hanabnihobraana@gmail.com <br />
-                Community section: Bhorelations@gmail.com<br />
-                Media section: Bhomedia.org@gmail.com
+                <img id='donate' src='/donate.jpg' alt="Picture of the author" />
             </div>
         </div>
     )

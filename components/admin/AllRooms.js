@@ -22,7 +22,6 @@ const AllRooms = () => {
     useEffect(() => {
 
         dispatch(getAdminRooms())
-debugger
         if (error) {
             toast.error(error);
             dispatch(clearErrors())

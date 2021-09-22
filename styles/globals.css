@@ -5,6 +5,7 @@ body {
     margin: 0px;
     padding: 0px;
     overflow-x: hidden;
+    background-color: #f8e6da;
 }
 
 * {
@@ -284,6 +285,12 @@ nav {
 
 .view-btn {
     background-color: #A88569;
+    color: white;
+}
+
+.view-btn:hover {
+    background-color: #ddb99bef;
+    color: #3c251c;
 }
 
 .view-btn a {
@@ -576,6 +583,14 @@ input::placeholder {
     color: #A88569;
     cursor: pointer;
 }
+
 .social:hover {
     color: #ddb99bef;
+}
+
+#donate {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }

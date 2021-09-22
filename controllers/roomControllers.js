@@ -13,7 +13,7 @@ const allRooms = catchAsyncErrors(async (req, res) => {
 
     const roomsCount = await Room.countDocuments();
 
-    const apiFeatures = new APIFeatures(Room.find(), req.query)
+    const apiFeatures = new APIFeatures(Room.find().sort({ createdAt: -1 }), req.query)
         .search()
         .filter()
 
