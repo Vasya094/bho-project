@@ -8,7 +8,7 @@ import { wrapper } from '../../redux/store'
 export default function RoomDetailsPage() {
     return (
         <Layout>
-            <RoomDetails title='Room Details' />
+            <RoomDetails title='News Details' />
         </Layout>
     )
 }

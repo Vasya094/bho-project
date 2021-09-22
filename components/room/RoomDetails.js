@@ -119,7 +119,7 @@ const RoomDetails = () => {
     return (
         <>
             <Head>
-                <title>{room.name} - BookIT</title>
+                <title>{room.title} - BHO</title>
             </Head>
 
             <div className="container container-fluid">
