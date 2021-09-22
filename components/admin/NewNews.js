@@ -62,7 +62,6 @@ debugger
 
         // setImages([]);
         // setImagesPreview([]);
-debugger
         files.forEach(file => {
 
             const reader = new FileReader();
@@ -70,13 +69,11 @@ debugger
             reader.onload = () => {
                 if (reader.readyState === 2) {
                     setImages(oldArray => [...oldArray, reader.result]);
-                    debugger
                     setImagesPreview(oldArray => [...oldArray, reader.result]);
                 }
             }
 
             reader.readAsDataURL(file)
-debugger
         })
 
     }
