@@ -5,6 +5,9 @@ body {
     margin: 0px;
     padding: 0px;
     overflow-x: hidden;
+}
+
+body:not(#main-picture) {
     background-color: #f8e6da;
 }
 
@@ -190,7 +193,7 @@ body {
 }
 
 
-/* Avatar */
+/* Avatur */
 
 .avatar {
     display: inline-block;
@@ -538,10 +541,11 @@ input::placeholder {
 #main-picture {
     background-size: cover;
     background-position: 50%;
+    background-color: none !important;
     z-index: -1;
     width: 100vw;
     height: 80vh;
-    background-image: linear-gradient(rgba(150, 75, 0, 0.75), rgba(255, 227, 194, 0.5), rgba(150, 75, 0, 0.75)), url('https://firebasestorage.googleapis.com/v0/b/tahvil-mik.appspot.com/o/210305199_544529996575380_4613260962180733638_n%20copy.jpg?alt=media&token=15415842-8cea-4e8d-93c6-172e3751fcb3');
+    background-image: linear-gradient(rgba(150, 75, 0, 0.75), rgba(255, 227, 194, 0.5), rgba(150, 75, 0, 0.75)), url('https://firebasestorage.googleapis.com/v0/b/tahvil-mik.appspot.com/o/210305199_544529996575380_4613260962180733638_n%20copy.jpg?alt=media&token=15415842-8cea-4e8d-93c6-172e3751fcb3') !important;
 }
 
 #tagline {
